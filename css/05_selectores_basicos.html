@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
 	<meta charset="UTF-8">
-	<title>Selectores Basicos CSS </title>
+	<title>Selectores Básicos CSS</title>
 	<style>
 		/* Universal */
-		*{
+		* {
 			border: 1px solid gray;
 			font-family: Arial;
 		}
 		/* Etiqueta */
-		li{
+		li {
 			background-color: teal;
 			margin: 4px;
 		}
@@ -22,28 +22,28 @@
 		.menu {
 			border: 4px solid fuchsia;
 		}
-		/* Identificacion */
+		/* Identificación */
 		#opt1 {
 			background-color: orange;
-		} 
+		}
 		/* Combinado */
 		ol.menu li#opt2 {
 			background-color: yellow;
 			font-size: 2em;
-
 		}
 	</style>
-
 </head>
 <body>
-	<h1> Selectores Basicos CSS </h1>
+	<h1>Selectores Básicos CSS</h1>
 	<hr>
 	<ol class="menu">
 		<li id="opt1">Universal (*)</li>
 		<li id="opt2">Etiqueta (p)</li>
-		<li>Descendente (ol li) (*)</li>
+		<li>Descendente (ol li)</li>
 		<li>Clase (.)</li>
 		<li>ID (#)</li>
-		<li>Combinando (ol.menu li#opt1)</li>
+		<li>Combinado (ol.menu li#opt1)</li>
+	</ol>
+
 </body>
 </html>
