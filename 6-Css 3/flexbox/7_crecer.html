@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Alineación Items Flex Box</title>
+	<style>
+		body {
+			font: 16px Arial;
+			color: #666
+		}
+		h3 {
+			border: 2px solid #20D56B;
+			border-radius: 10px;
+			padding: 10px;
+		}
+		ul.fruits {
+			background-color: #DC2ABD;
+			border-radius: 4px;
+			display: flex; /*activar FlexBox*/
+			flex-wrap: wrap;
+			height: 768px;
+			list-style: none;
+			padding: 0px;
+			margin: 20px 0px;
+		}
+
+		ul.fruits li {
+			background-color: #c9e1d3;
+			margin: 4px;
+		}
+		/*crecer*/
+		ul.fruits.options1 li:nth-of-type(1) { flex-grow: 2;}
+		ul.fruits.options2 li:nth-of-type(3) { flex-grow: 3;}
+		
+		
+	</style>
+</head>
+<body>
+	<h1>Crecer Items Flex Box</h1>
+	<h3>felx-grow: n</h3>
+	<ul class="fruits options1">
+	<li><img src="imgs/grapes.svg"></li>
+	<li><img src="imgs/pear.svg"></li>
+	<li><img src="imgs/orange.svg"></li>
+	</ul>
+	
+	<h3>align-content: : flex-start</h3>
+	<ul class="fruits options2">
+	<li><img src="imgs/grapes.svg"></li>
+	<li><img src="imgs/pear.svg"></li>
+	<li><img src="imgs/orange.svg"></li>
+	</ul>
+	
+	
+
+	
+</html>
