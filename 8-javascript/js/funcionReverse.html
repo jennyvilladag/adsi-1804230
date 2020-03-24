@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Ver arreglo invertido</title>
+</head>
+<body>
+	<p>Invertir arreglo con valores originales</p>
+	<buttom onclick="invertirArray()">Invertir</buttom>
+	<p id="demostracion"></p>
+	<script type="text/javascript">
+		function invertirArray(longitudArray){
+			var arregloOriginal = new Array(longitudArray);
+			for(let i= 0; i < arregloOriginal.lenght; i++){
+				arregloOriginal[i] = i;
+				console.log(arregloOriginal[i]);
+
+			}
+			arregloOriginal.reverse();
+			console.log("El arreglo invertido es:");
+			for(let i = 0; i<arregloOriginal.lenght; i++){
+				console.log(arregloOriginal);
+			}
+			document.getElementById("demostracion").innerHTML =arregloOriginal;
+		}
+	</script>
+</body>
+</html>
