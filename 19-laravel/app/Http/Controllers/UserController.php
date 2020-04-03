@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App/User
 use Illuminate\Http\Request;
+use App\user;
+use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
@@ -36,19 +37,22 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
+        // dd($request->all());
         $user = new User;
-        $user->fullname  = $request->fullname;
-        $user->email     = $request->email;
-        $user->phone     = $request->phone;
+        $user->fullname = $request->fullname;
+        $user->email = $request->email;
+        $user->phone = $request->phone;
         $user->birthdate = $request->birthdate;
-        $user->gender    = $request->gender;
-        $user->address   = $request->addres;
-        $user->password  = $request->password;
+        $user->gender = $request->gender;
+        $user->address = $request->address;
+        $user->email_verified_at = now();
+        $user->password = bcrypt($request['password']);
+        $user->remember_token    = Str::random(10);
 
-        if($user->save()) {
+         if($user->save()) {
             return redirect('users')->with('message', 'El Usuario: '.$user->fullname.' fue adicionado con exito');
-        
+
+        }
     }
 
     /**
@@ -59,7 +63,9 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = User::findOrFail($id);
+        //dd($user);
+        return view('users.show')->with('user', $user);
     }
 
     /**
@@ -68,11 +74,13 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    
     public function edit($id)
     {
-        //
+         $user = User::findOrFail($id);
+        //dd($user);
+        return view('users.edit')->with('user', $user);
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -80,9 +88,14 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+   public function update(Request $request, $id)
     {
-        //
+        $user = User::findOrFail($id);
+        $user->update($request->all());
+
+        if ($user->save()) {
+            return redirect('users')->with('message','El usuario '.$user->fullname.' Fue modificado con éxito');
+        }
     }
 
     /**
@@ -93,6 +106,10 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::findOrFail($id);
+        $user->delete();         
+        if($user->delete()) {
+            return redirect('users')->with('message', 'El Usuario: '.$user->fullname.' fue eliminado con Exito!');
+        }
     }
 }
